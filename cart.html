@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giỏ Hàng - LAMASNEAKER</title>
+    <link rel="icon" href="img/logo.png" type="image/png" />
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/cart.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav>
+          <div class="nav-logo">
+            <a href="index.html" style="width: 32px; height: 32px">
+              <img src="img/logo.png" alt="logo" width="32px" height="32px" />
+            </a>
+            <a href="index.html" class="logo">LAMASNEAKER</a>
+          </div>
+          <div class="nav-links">
+            <a href="index.html">Trang chủ</a>
+            <a href="about.html">Về chúng tôi</a>
+            <a class="active">
+              <button
+                id="cart-button"
+                title="Giỏ hàng"
+                onclick="window.location.href='cart.html'"
+              >
+                🛒
+                <span id="cart-count">0</span>
+              </button>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section id="cart-section">
+        <h2>Giỏ Hàng Của Bạn</h2>
+        <div id="cart-details">
+          <div id="cart-list"></div>
+          <div class="cart-summary">
+            <div class="cart-item">
+              <strong>Tổng tiền tạm tính:</strong>
+              <strong id="cart-total">0 VNĐ</strong>
+            </div>
+            <button class="cta-button w-100" id="checkoutBtn">
+              Thanh Toán Ngay
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div
+      id="checkoutModal"
+      style="
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+      "
+    >
+      <div class="modal-content">
+        <span id="closeModal" class="close-btn">&times;</span>
+        <h3 class="modal-title">Thông Tin Thanh Toán</h3>
+        <form id="checkoutForm">
+          <div class="form-group">
+            <label for="fullName">Họ và Tên:</label>
+            <input type="text" id="fullName" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Số điện thoại:</label>
+            <input type="tel" id="phone" required />
+          </div>
+          <div class="form-group">
+            <label for="address">Địa chỉ giao hàng:</label>
+            <input type="text" id="address" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="shoeSize">Chọn Size Giày:</label>
+            <select id="shoeSize" required>
+              <option value="" disabled selected>-- Chọn size --</option>
+              <option value="36">36</option>
+              <option value="37">37</option>
+              <option value="38">38</option>
+              <option value="39">39</option>
+              <option value="40">40</option>
+              <option value="41">41</option>
+              <option value="42">42</option>
+              <option value="43">43</option>
+              <option value="44">44</option>
+              <option value="45">45</option>
+            </select>
+          </div>
+          <button type="submit" class="cta-button w-100">Xác Nhận Đơn</button>
+        </form>
+      </div>
+    </div>
+
+    <div
+      id="successModal"
+      style="
+        display: none;
+        position: fixed;
+        z-index: 3000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+        text-align: center;
+      "
+    >
+      <div class="modal-content-success">
+        <h3 class="success-title">🎉 Bạn đã đặt đơn hàng thành công! 🎉</h3>
+        <p class="success-message">Thông tin của bạn đã được gửi. Đơn hàng sẽ được giao trong vài ngày tới.</p>
+        <p class="success-thankyou">Cảm ơn bạn đã ủng hộ !!! ❤️</p>
+        <button onclick="window.location.href='index.html';" class="cta-button">
+          Trở về Trang chủ
+        </button>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <p>Theo dõi chúng tôi:</p>
+        <div class="footer-links">
+          <a href="#">
+            <i class="facebook-icon fa-brands fa-square-facebook"></i>
+            Facebook</a
+          >
+          <a href="#">
+            <i class="instagram-icon fa-brands fa-instagram"></i>
+            Instagram</a
+          >
+          <a href="#">
+            <i class="zalo-icon fa-solid fa-z"></i>
+            Zalo</a
+          >
+        </div>
+        <p style="margin-top: 15px">&copy; 2026 LAMASNEAKER.</p>
+      </div>
+    </footer>
+    <script src="Js/cart.js"></script>
+    <script>
+      // Đảm bảo giỏ hàng được hiển thị ngay khi trang tải xong
+      document.addEventListener("DOMContentLoaded", () => {
+        renderCart();
+      });
+    </script>
+    <script
+      src="https://kit.fontawesome.com/32d84c096a.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
